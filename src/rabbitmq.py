@@ -14,9 +14,9 @@ def send_posts(queue: str = "posts_jsonplaceholder", salvar_json: bool = True) -
         post = value.dict()
         post["user"] = users[post['user_id']].dict()
         post.pop("user_id")
-        guid_post = str(uuid4())
-        file_local = f"src//json_files//requests//{guid_post}.json"
         if salvar_json:
+            guid_post = str(uuid4())
+            file_local = f"src//json_files//requests//{guid_post}.json"
             with open(file_local, "w") as file:
                 json.dump(post, file)
                 print(f"Post que foi enviado: {file_local}")
